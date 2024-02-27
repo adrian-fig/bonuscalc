@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
     const calculateBtn = document.getElementById('calculateBtn');
     const results = document.getElementById('results');
+    const form = document.getElementById('calculatorForm'); // Ensure your form has an ID
 
-    calculateBtn.addEventListener('click', function() {
-        this.textContent = 'Calculating...';
-        this.disabled = true;
+    function performCalculation() {
+        calculateBtn.textContent = 'Calculating...';
+        calculateBtn.disabled = true;
 
         setTimeout(function() {
             // Retrieve input values from the form
@@ -30,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const productionBonusTotal = (effectiveRestAndRecoveryRate - baseHourlyRate) * (totalHours + otHours - restHours);
             const totalCompensation = otTotal + totalTrainingCompensation + restAndRecoveryTotal + productionBonusTotal + baseHourlyRateTotal;
 
-            // Display the results accurately
+            // Display the results
             results.innerHTML = `
                 <strong>Total Training Compensation:</strong> $${totalTrainingCompensation.toFixed(2)}<br>
                 <strong>Rest and Recovery Total:</strong> $${restAndRecoveryTotal.toFixed(2)}<br>
@@ -40,9 +41,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 <strong>Total Compensation:</strong> $${totalCompensation.toFixed(2)}
             `;
 
-            // Reset button text and re-enable it
             calculateBtn.textContent = 'Calculate';
             calculateBtn.disabled = false;
         }, 1000);
+    }
+
+    calculateBtn.addEventListener('click', performCalculation);
+
+    // Add event listener for the form to listen for Enter key press
+    form.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Prevent the default form submit behavior
+            performCalculation();
+        }
     });
 });
