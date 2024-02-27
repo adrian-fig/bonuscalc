@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compensation Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Compensation Calculator</h1>
+    </header>
+    <form id="calculatorForm">
+        <div class="input-group">
+            <label>Base Hourly Rate: <input type="number" id="baseHourlyRate" step="0.01"></label>
+            <label>Flag Rate: <input type="number" id="flagRate" step="0.01"></label>
+        </div>
+        <div class="input-group">
+            <label>Total Straight-Time Hours: <input type="number" id="totalHours" step="0.01"></label>
+            <label>Flag Hours: <input type="number" id="flagHours" step="0.01"></label>
+        </div>
+        <div class="input-group">
+            <label>Hours of Rest/Recovery: <input type="number" id="restHours" step="0.01"></label>
+            <label>Overtime Hours: <input type="number" id="otHours" step="0.01"></label>
+        </div>
+        <div class="input-group"> <!-- Wrap Training Hours in an input-group for centering -->
+            <label>Training Hours: <input type="number" id="trainingHours" step="0.01"></label>
+        </div>
+        <button type="button" id="calculateBtn">Calculate</button>
+    </form>
+    <div id="results">
+    
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
